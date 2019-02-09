@@ -291,7 +291,7 @@ public class TimestampIncrementingCriteria {
     coalesceTimestampColumns(builder);
     builder.append(" < ? AND ((");
     coalesceTimestampColumns(builder);
-    builder.append(" = ? AND ");
+    builder.append(" <= ? AND ");//< added to fix AS400 problem with ts getting smaller!
     builder.append(incrementingColumn);
     builder.append(" > ?");
     builder.append(") OR ");
